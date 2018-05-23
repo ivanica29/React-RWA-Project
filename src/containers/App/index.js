@@ -1,34 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Button } from 'reactstrap';
-import { incrementCounter, decrementCounter } from '../../reducers/counter';
+
+import SearchBar from '../Search_bar';
+import CurrentTemp from '../CurrentTemp';
+
+import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
 import './style.scss';
+import WeatherList from "../WeatherList";
 
 class App extends Component {
   render() {
     return (
     	<div>
-      		<div className="custom">{this.props.currentCounter}</div>
-      		<Button color="primary" onClick={this.props.incrementCounter.bind(this)}>Increase</Button>	
-      		<Button color="danger" onClick={this.props.decrementCounter.bind(this)}>Decrease</Button>	
+
+        <Grid columns='equal' className="grid">
+          <GridRow centered columns={1}>
+            <GridColumn/>
+              <SearchBar/>
+          </GridRow>
+
+          <WeatherList/>
+
+          <CurrentTemp/>
+        </Grid>
+
       	</div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-	return {
-		currentCounter: state.counter.currentNumber
-	}
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-  	incrementCounter,
-  	decrementCounter
-  }, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({
+//   }, dispatch);
+// }
+
+export default connect(null, null)(App);

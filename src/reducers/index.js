@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-
-import CounterReducer from './counter';
+import City from './reducer_city';
 
 const rootReducer = combineReducers({
-  counter: CounterReducer
+  city: City
 });
 
 export default rootReducer;
