@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import SearchBar from '../Search_bar';
 import CurrentTemp from '../CurrentTemp';
+import Icon from '../Icon';
 
 import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
@@ -12,7 +13,7 @@ import WeatherList from "../WeatherList";
 class App extends Component {
   render() {
     return (
-    	<div>
+    	<div className="bgrd">
 
         <Grid columns='equal' className="grid">
           <GridRow centered columns={1}>
@@ -23,6 +24,7 @@ class App extends Component {
           <WeatherList/>
 
           <CurrentTemp/>
+
         </Grid>
 
       	</div>

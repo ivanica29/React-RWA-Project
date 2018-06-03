@@ -37,7 +37,20 @@ module.exports = {
             options: { minimize: true }
           }
         ]
-      }
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+          },
+        },
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-loader'
+      },
     ]
   },
   plugins: [

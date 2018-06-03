@@ -1,14 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Archivo+Black');
 
 .wrapper {
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 100%;
   height: 100%;
-  background: violet;
+  background: #2b313a;
+  border-radius: 3px;
+  filter: alpha(opacity=80);
+
 
   .temperature {
+    color: white;
     font-family: 'Archivo Black', sans-serif;
     font-size: xx-large;
     text-align: center;
   }
+
+  .info {
+    font-family: 'Archivo', sans-serif;
+    color: white;
+    text-align: center;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
 }
 
+.wrapper:hover {
+  background: #353c47;
+  transform: scale(1.2);
+  transition: 400ms;
+}

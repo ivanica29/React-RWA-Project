@@ -1,10 +1,11 @@
 import { put, call } from "redux-saga/effects";
 
 import axios from "axios";
-import { setCurrentTemp, fiveDays } from "../reducers/reducer_city";
+import { setCurrentTemp, fiveDays, setCurrentDescription , setIcon} from "../reducers/reducer_city";
 
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?id=`;
-  const API_KEY = '889b758ec5c74fa3a1bdc4165b4ce65b';
+const API_KEY = '889b758ec5c74fa3a1bdc4165b4ce65b';
+const ICON_URL = 'http://openweathermap.org/img/w/';
 
 export function* fetchCitySaga(action) {
   try {
@@ -14,6 +15,7 @@ export function* fetchCitySaga(action) {
       },
       responseType: 'json'
     });
+
 
     let foundCity = response.data.filter((city) => {
       return city.name === action.payload
@@ -25,13 +27,20 @@ export function* fetchCitySaga(action) {
 
     const responseWeather = yield axios.get(url);
 
+
+    let iconDesc = responseWeather.data.list[0].weather[0].icon;
+    let iconUrl = `${ICON_URL}${iconDesc}.png`;
+    yield put(setIcon(iconUrl));
+
     let currentTemp = responseWeather.data.list[0].main.temp;
     let rounded = Math.round(currentTemp - 273);
 
     yield put(setCurrentTemp(rounded));
 
-    console.log(responseWeather);
+    let currentHour = responseWeather.data.list[0];
 
+    let currentDescription = currentHour.weather[0].description;
+    yield put(setCurrentDescription(currentDescription));
 
     let weatherFiveDays = responseWeather.data.list.filter( (item) => {
       if(item.dt_txt.search("12:00") > -1) {
@@ -39,6 +48,7 @@ export function* fetchCitySaga(action) {
       }
     });
 
+    console.log(weatherFiveDays);
     yield put(fiveDays(weatherFiveDays));
 
   } catch (e) {

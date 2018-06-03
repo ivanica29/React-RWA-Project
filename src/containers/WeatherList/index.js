@@ -5,6 +5,7 @@ import WeatherItem from '../WeatherItem';
 
 import { GridRow, GridColumn } from 'semantic-ui-react';
 
+const ICON_URL = 'http://openweathermap.org/img/w/';
 class WeatherList extends Component {
 
   renderItems() {
@@ -12,18 +13,17 @@ class WeatherList extends Component {
       return;
     }
     return this.props.fiveDays.map( (day) => {
-      console.log(day);
       let temp = Math.round(day.main.temp - 273);
 
       let date = day.dt_txt.split(" ")[0].split("2018-")[1];
 
       let desc = day.weather[0].description;
 
-      console.log(desc);
+      let icon = day.weather[0].icon;
 
       return(
           <GridColumn>
-            <WeatherItem celsius={temp} day={date} description={desc} />
+              <WeatherItem celsius={temp} day={date} description={desc} iconurl={`${ICON_URL}${icon}.png`}/>
           </GridColumn>
       );
     })

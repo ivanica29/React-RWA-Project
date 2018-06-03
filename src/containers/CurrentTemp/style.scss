@@ -1,0 +1,20 @@
+.wrapperCurrent {
+  text-align: center;
+  width: 40%;
+  height: 100%;
+  background: #353c47 !important;
+  margin: 0 auto;
+
+  .temperature {
+    color: white;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: xx-large;
+    text-align: center;
+  }
+
+  .infoText {
+    color: white;
+    font-family: 'Archivo', sans-serif;
+  }
+}
+
