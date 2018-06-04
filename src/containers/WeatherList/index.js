@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import WeatherItem from '../WeatherItem';
+import WeatherItem from '../../components/WeatherItem';
 
 import { GridRow, GridColumn } from 'semantic-ui-react';
 

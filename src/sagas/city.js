@@ -7,11 +7,13 @@ const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?id=`;
 const API_KEY = '889b758ec5c74fa3a1bdc4165b4ce65b';
 const ICON_URL = 'http://openweathermap.org/img/w/';
 
+const CITY_LIST_PATH = process.env.NODE_ENV === 'development' ? '/dist/json/city.list.json' : '/json/city.list.json';
+
 
 export function* fetchCitySaga(action) {
   try {
 
-    const response = yield axios.get('/dist/json/city.list.json', {
+    const response = yield axios.get(CITY_LIST_PATH, {
       transformResponse: (req) => {
         return req
       },

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Icon from '../Icon';
+import Icon from '../../components/Icon';
 
 import { GridRow, GridColumn } from 'semantic-ui-react';
 import './style.scss';

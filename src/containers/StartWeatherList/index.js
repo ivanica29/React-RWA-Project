@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 import { GridRow, GridColumn } from 'semantic-ui-react';
 
-import StartWeatherItem from '../StartWeatherItem';
+import StartWeatherItem from '../../components/StartWeatherItem';
 
 class StartWeatherList extends Component {
 

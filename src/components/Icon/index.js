@@ -13,9 +13,4 @@ class Icon extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-  }
-};
-
-export default connect(mapStateToProps, null)(Icon);
+export default connect(null, null)(Icon);
