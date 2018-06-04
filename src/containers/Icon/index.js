@@ -7,7 +7,6 @@ class Icon extends Component {
   render() {
     return(
       <div>
-        {/*<i className="wi wi-day-sunny wi-flip-vertical"/>*/}
         <img src={this.props.iconurl} />
       </div>
     );

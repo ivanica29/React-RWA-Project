@@ -5,16 +5,21 @@ import Icon from '../Icon';
 
 import { GridRow, GridColumn } from 'semantic-ui-react';
 import './style.scss';
+import Chart from "../Chart";
 
 class CurrentTemp extends Component {
   render() {
+
+    if(this.props.iconurl === "") {
+      return null;
+    }
 
     return(
       <GridRow centered columns={1}>
         <GridColumn>
           <div className="wrapperCurrent">
             <div className="temperature">
-             {this.props.currentTemp}
+             {this.props.currentTemp} °C
             </div>
             <Icon iconurl={this.props.iconurl}/>
             <div className="infoText">
@@ -23,6 +28,7 @@ class CurrentTemp extends Component {
 
           </div>
 
+          <Chart/>
         </GridColumn>
       </GridRow>
     );

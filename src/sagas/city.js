@@ -1,14 +1,16 @@
 import { put, call } from "redux-saga/effects";
 
 import axios from "axios";
-import { setCurrentTemp, fiveDays, setCurrentDescription , setIcon} from "../reducers/reducer_city";
+import { setCurrentTemp, fiveDays, setCurrentDescription , setIcon, setHours, setTemp120h} from "../reducers/reducer_city";
 
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?id=`;
 const API_KEY = '889b758ec5c74fa3a1bdc4165b4ce65b';
 const ICON_URL = 'http://openweathermap.org/img/w/';
 
+
 export function* fetchCitySaga(action) {
   try {
+
     const response = yield axios.get('/dist/json/city.list.json', {
       transformResponse: (req) => {
         return req
@@ -47,9 +49,18 @@ export function* fetchCitySaga(action) {
         return true;
       }
     });
-
-    console.log(weatherFiveDays);
     yield put(fiveDays(weatherFiveDays));
+
+    let timeArray = responseWeather.data.list.map((item) => {
+      let time =  item.dt_txt.split(" ")[1];
+      return time.slice(0, time.length-3);
+    });
+    yield put(setHours(timeArray));
+
+    let temp120h = responseWeather.data.list.map((item) => {
+      return (Math.round(item.main.temp - 273));
+    });
+    yield put(setTemp120h(temp120h));
 
   } catch (e) {
     console.log(e.toString());
