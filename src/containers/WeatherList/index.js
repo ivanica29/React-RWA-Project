@@ -12,7 +12,7 @@ class WeatherList extends Component {
     if(this.props.fiveDays.length === 0) {
       return;
     }
-    return this.props.fiveDays.map( (day) => {
+    return this.props.fiveDays.map( (day, index) => {
       let temp = Math.round(day.main.temp - 273);
 
       let date = day.dt_txt.split(" ")[0].split("2018-")[1];
@@ -22,7 +22,7 @@ class WeatherList extends Component {
       let icon = day.weather[0].icon;
 
       return(
-          <GridColumn>
+          <GridColumn key={index}>
               <WeatherItem celsius={temp} day={date} description={desc} iconurl={`${ICON_URL}${icon}.png`}/>
           </GridColumn>
       );

@@ -6,12 +6,14 @@ import SearchBar from '../Search_bar';
 import CurrentTemp from '../CurrentTemp';
 import StartWeatherList from '../StartWeatherList';
 
-import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, Button } from 'semantic-ui-react';
 
-import './style.scss';
 import WeatherList from "../WeatherList";
 
+import './style.scss';
+
 import { fetchStartCity } from '../../reducers/reducer_start_city';
+import { clearWeather } from '../../reducers/reducer_city';
 
 class App extends Component {
   componentDidMount() {
@@ -33,9 +35,17 @@ class App extends Component {
     	<div className="bgrd">
 
         <Grid columns='equal' className="grid">
-          <GridRow centered columns={1}>
-            <GridColumn/>
+          <GridRow centered columns={2} className="first-row">
+
+            <GridColumn >
               <SearchBar/>
+            </GridColumn>
+
+            <GridColumn>
+              {this.props.weatherFiveDays.length !== 0 && (<Button onClick={() => this.props.clearWeather()} primary>
+                Back
+              </Button>)}
+            </GridColumn>
           </GridRow>
 
           {itemForRender}
@@ -54,7 +64,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchStartCity
+    fetchStartCity,
+    clearWeather
   }, dispatch);
 };
 

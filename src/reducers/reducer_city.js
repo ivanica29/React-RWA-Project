@@ -9,6 +9,7 @@ export const SET_CURRENT_DESCRIPTION = '@reducer_city/SET_CURRENT_DESCRIPTION';
 export const SET_ICON = '@reducer_city/SET_ICON';
 export const SET_HOURS = '@reducer_city/SET_HOURS';
 export const SET_120H = '@reducer_city/SET_120H';
+export const CLEAR_WEATHER = '@reducer_city/CLEAR_WEATHER';
 
 
 // ACTIONS
@@ -19,6 +20,7 @@ export const setCurrentDescription = createAction(SET_CURRENT_DESCRIPTION);
 export const setIcon = createAction(SET_ICON);
 export const setHours = createAction(SET_HOURS);
 export const setTemp120h = createAction(SET_120H);
+export const clearWeather = createAction(CLEAR_WEATHER);
 
 
 // INITIAL STATE OF REDUCER
@@ -74,6 +76,12 @@ export default handleActions({
   [SET_120H](state = [], { payload } ) {
     return state.merge({
       temp120h: payload
+    })
+  },
+
+  [CLEAR_WEATHER](state = [], { payload } ) {
+    return state.merge({
+      weatherFiveDays: []
     })
   },
 

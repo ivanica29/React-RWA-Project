@@ -11,10 +11,9 @@ class StartWeatherList extends Component {
     const cities = ["Belgrade", "London", "Rome", "Berlin"];
 
     return cities.map( (city, index) => {
-      console.log(index);
 
       return(
-        <GridColumn>
+        <GridColumn key={index}>
           <StartWeatherItem name={city} temp={this.props.tempStartCities[index]} desc={this.props.descStartCities[index]} icon={this.props.iconsStartCities[index]}/>
         </GridColumn>
       );

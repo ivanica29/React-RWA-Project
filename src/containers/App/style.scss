@@ -4,15 +4,24 @@
 	font-size: 56px;
 }
 
-.grid{
-	padding: 10px 90px 0px 90px !important;
-
-	.row{
-		margin-left: 0 !important;
-	}
-}
-
 .bgrd {
 	height: 100%;
 	width: 100%;
+
+
+	.grid{
+		padding: 10px 90px 0px 90px !important;
+
+		.row{
+			margin-left: 0 !important;
+		}
+
+		.first-row {
+			padding-left: 200px;
+			padding-right: 200px;
+		}
+	}
 }
+
+
+

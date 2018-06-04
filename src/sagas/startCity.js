@@ -39,7 +39,6 @@ export function* fetchStartCity(action) {
     return (`${ICON_URL}${item.data.list[0].weather[0].icon}.png`)
   });
 
-  console.log(iconsForStartCities);
 
   yield put(setIconStartCities(iconsForStartCities));
 
